@@ -19,11 +19,9 @@ import app from './App.vue'
 
 
 
-
 //导入MUI中的组件
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
-
 
 
 
@@ -34,10 +32,8 @@ Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 
-
 //导入Mnit-UI中的样式
 import 'mint-ui/lib/style.css'
-
 
 
 
