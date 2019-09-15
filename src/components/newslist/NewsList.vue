@@ -36,7 +36,7 @@ export default{
             this.$http.get('api/getnewslist').then( result => {
                 if(result.body.status === 0){
                     this.NewsList = result.body.message
-                    console.log(result.body.message )
+                    // console.log(result.body.message )
                 }else{
                     Toast("获取数据失败")
                 }

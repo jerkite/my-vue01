@@ -6,6 +6,11 @@ import VueRouter from 'vue-router'
 //安装路由
 Vue.use(VueRouter)
 
+import VuePreview from 'vue-preview'
+ 
+// defalut install
+Vue.use(VuePreview)
+
 
 import moment from 'moment'
 //定义全局过滤器
@@ -41,12 +46,12 @@ import './lib/mui/css/icons-extra.css'
 
 
 
-//按需导入Mnit-UI中的组件
-import { Header, Swipe, SwipeItem ,Button} from 'mint-ui'
-Vue.component(Header.name, Header)
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+//全局导入Mnit-UI中的组件
+import MintUI from 'mint-ui' 
+Vue.use(MintUI)
+import 'mint-ui/lib/style.css'
+
+
 
 //导入Mnit-UI中的样式
 import 'mint-ui/lib/style.css'

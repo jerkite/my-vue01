@@ -55,6 +55,8 @@ export default {
                      }
                      this.comments.unshift(cmt);
                      this.msg= "";
+                }else{
+                    Toast("评论失败")
                 }
             })
         }
