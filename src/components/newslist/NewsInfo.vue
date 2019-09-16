@@ -9,7 +9,9 @@
         </div>
         <hr>
         <div class="newinfo-content" v-html="newsinfo.content"></div>
-        <comment :id="this.id"></comment>
+
+        <!-- 使用子组件要在标签内传递id的值 -->
+        <comment :id="this.id"></comment>  
     </div>
 </template>
 
@@ -21,15 +23,15 @@ import comment from '../subcomponents/Comment.vue'
 export default {
     data(){
         return{
-            id:this.$route.params.id,
-            newsinfo: {}
+            id:this.$route.params.id,  
+            newsinfo: {}  //保存图文详情数据
         }
     },
     created(){
         this.getNewsInfo()
     },
     methods:{
-        getNewsInfo(){
+        getNewsInfo(){  //获取图文详情数据
             this.$http.get('api/getnew/' + this.id).then(result => {
                 if(result.body.status === 0){
                     this.newsinfo = result.body.message[0];
@@ -39,7 +41,7 @@ export default {
             })
         }
     },
-    components:{
+    components:{   //使用子组件 在template中使用<comment></comment>
         comment
     }
     

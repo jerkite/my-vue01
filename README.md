@@ -177,11 +177,11 @@
  ## 实现缩略图的效果
  1. 先加载所有的图片并显示到页面上；
  2. 使用vue-preview插件来实现缩略图效果；
- 3. 如何使用缩略图组件呢：
-  3.1运行npm i vue-preview -S安装
-  3.2在main.js导入此包并使用import VuePreview from 'vue-preview' Vue.use(VuePreview)
-  3.2在页面中，先把获取到的图片，按照标准的格式做一层包装：为每个图片添加w、h、msrc属性
-  3.3把官方提供的 例子中的vue-preview标签粘贴到页面中，去渲染数据就行了
+ 3. 如何使用缩略图组件呢：  
+  3.1运行npm i vue-preview -S安装  
+  3.2在main.js导入此包并使用import VuePreview from 'vue-preview' Vue.use(VuePreview)  
+  3.2在页面中，先把获取到的图片，按照标准的格式做一层包装：为每个图片添加w、h、msrc属性  
+  3.3把官方提供的 例子中的vue-preview标签粘贴到页面中，去渲染数据就行了  
 
 
 
@@ -189,3 +189,54 @@
 1.在vue-preview外层定义一个类名为thumimg的div  
 2.找到所对应的类逐层向下定义样式  
 3.需要把style中的scoped删掉，才能展示效果  
+
+
+## 点击商品购买跳转到商品列表页面
+  1. 添加商品列表的组件  
+  2. 改造商品购买为router-link  
+  3. 添加路由规则  
+
+## 实现商品列表的经典两列布局
+  1. 外层有一个 goodslist-container， 里面的每个商品都是goodsinfo  
+  2. 给外层的goodslist-container设置 display:flex;布局，同时为了让一行只显示两个商品，我们为每个goods-item添加了宽度为49%;同时，设置flex-wrap: wrap  
+  3. 通过 为父盒子添加margin: 8px; 来挤出左右的间距    
+  4. 为了保留出中间的间隙，为父盒子goodslist-container添加了justify-content: space-between  
+
+
+
+## 改造进入商品详情页面的路由链接
+1. 使用编程式导航跳转页面设置 this.$router.push({ name: 'goodsinfo', params: { id } })  
+2. 添加新的组件页面  
+3. 添加路由和组件的对应规则；
+
+## 实现商品详情页面的卡片视图布局
+1. 使用 MUI提供的 card.html 来实现即可  
+
+
+
+## 实现商品详情页面的轮播图效果
+1.将轮播图方法抽出为一个子组件为Swipes  
+2.在商品详情页面中调用子组件  
+
+
+
+## 实现首页和商品轮播图的宽高设置
+1. 经过分析发现：首页和商品页面的轮播图，对于图片的宽有分歧：首页期望图片是：宽高100%商品详情页面期望图片是： 高度100%， 宽度自适应，图片居中显示   
+2. 让轮播图组件，提供一个 isfull 属性，表示是否撑满父元素；如果为true,表示，宽和高都要是100%，如果为 false，表示，宽是 自适应，高度是100%，同时图片居中显示  
+
+
+##进入商品详情中的图文介绍和商品评论的编程式导航
+1.使用编程式导航跳转页面设置 this.$router.push({ name: 'goodsdesc', params: { id } })
+  this.$router.push({ name: 'goodscomment', params: { id } })  
+
+##设置点击购物车出现小球半场动画
+1.创建小球并给小球设置position:absolute,确定小球的初始位置   
+2.根据分析需要确定小球距页面顶端和左侧的距离和小球所要到达位置距页面顶端和左侧的距离进行相减操作获得动态数据  
+ 2.2使用getBoundingClientRect()方法可以获得元素的top,left值。  
+ 2.2給小球加上ref="ball"可以使用 this.$refs.ball获得元素  
+
+
+##设置购买数量的最大值
+1.这里需要父组件向子组件传值，使用Props:[]向子组件传递数据  
+2.由于this.$http.get是异步加载，所以在子组件得到的件数最大值是undefined  
+3.可以用watch监听机制监听到max被赋值后，使用mui('.mui-numbox').numbox().setOption('max',newval)来給获得购买数量的最大值  

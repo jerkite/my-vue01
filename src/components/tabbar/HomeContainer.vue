@@ -1,10 +1,8 @@
 <template>
     <div>
         <!-- 轮播图区域 -->
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in Swipes" :key="item.img"><img :src="item.img" alt=""></mt-swipe-item>
-        </mt-swipe>
 
+        <lunbo-box :lunbotu="lunbotu" :isfull="true"></lunbo-box>
 
         <!-- 六宫格区域 -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -34,11 +32,12 @@
 
 <script>
 import { Toast} from 'mint-ui' 
+import swipes from '../subcomponents/Swipes.vue'
 
 export default {
         data(){
             return{
-                Swipes:[]  //保存轮播图数据
+                lunbotu:[]  //保存轮播图数据
             };
         },
         created(){
@@ -48,36 +47,21 @@ export default {
             getSwipe(){
                 this.$http.get("api/getlunbo").then( result =>{  //获取轮播图数据
                     if(result.body.status === 0){
-                        this.Swipes = result.body.message
+                        this.lunbotu = result.body.message
                     }else{
                         Toast("获取失败....")
                     }
                 })
             }
+        },
+        components:{
+            'lunbo-box':swipes
         }
 }
 </script>
 
 
 <style lang="scss" scoped>
-.mint-swipe{
-    height:200px;
-    .mint-swipe-item{
-        &:nth-child(1){
-            background-color:red;
-        }
-        &:nth-child(2){
-            background-color:blue;
-        }
-        &:nth-child(3){
-            background-color:yellow;
-        }
-        img{
-            width:100%;
-            height:100%;
-        }
-    }
-}
 .mui-table-view.mui-grid-view{
     background-color:#fff;
     .mui-table-view-cell.mui-media{

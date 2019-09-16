@@ -22,7 +22,7 @@
                 <img v-lazy="item.img_url">
                 <div class="info">
                     <h1 class="info-title">{{ item.title }}</h1>
-                    <div class="info-content">{{ item.zhaiyao}}</div>
+                    <div class="info-content" v-html="item.zhaiyao"></div>
                 </div>
             </router-link>
         </ul>
@@ -31,7 +31,7 @@
 
 
 <script>
-import mui from'../../lib/mui/js/mui.min.js'
+import mui from'../../lib/mui/js/mui.min.js' 
 import {Toast} from 'mint-ui'
 
 
@@ -39,8 +39,8 @@ import {Toast} from 'mint-ui'
 export default {
     data(){
         return{
-            cate:[],  //获取滑动框分类数据数组
-            list:[]  //获取图片列表数组
+            cate:[],  //保存滑动框分类数据数组
+            list:[]  //保存图片列表数组
         }
     },
     created(){
@@ -48,12 +48,12 @@ export default {
         this.getPhotoList(0)
     },
     mounted(){
-        mui('.mui-scroll-wrapper').scroll({
+        mui('.mui-scroll-wrapper').scroll({   //对滑动导航栏进行初始化，
             deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
         });
     },
     methods:{
-        getAllcategory(){
+        getAllcategory(){   //获取分类数据
             this.$http.get('api/getimgcategory').then(result => {
                 if(result.body.status === 0){
                     result.body.message.unshift({title:"全部",id:0})
@@ -63,10 +63,12 @@ export default {
                 }
             })
         },
-        getPhotoList(id){
+        getPhotoList(id){  //获取图片列表数据
             this.$http.get('api/getimages/' + id).then(result =>{
                 if(result.body.status === 0){
                     this.list = result.body.message
+                }else{
+                    Toast("获取图片列表失败")
                 }
             })
         }

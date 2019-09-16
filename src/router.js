@@ -11,6 +11,9 @@ import NewsInfo from './components/newslist/NewsInfo.vue'
 import PhotoList from './components/photolist/PhotoList.vue'
 import PhotoInfo from './components/photolist/PhotoInfo.vue'
 import GoodsList from './components/goodslist/GoodsList.vue'
+import GoodsInfo from './components/goodslist/GoodsInfo.vue'
+import GetDesc from './components/goodslist/GetDesc.vue'
+import GetComment from './components/goodslist/GetComment.vue'
 
 var router = new VueRouter({
     routes:[
@@ -24,6 +27,10 @@ var router = new VueRouter({
       { path: '/home/photolist', component: PhotoList },
       { path: '/home/photoinfo/:id', component: PhotoInfo },
       { path: '/home/goodslist', component: GoodsList },
+      { path: '/home/goodsinfo/:id', component: GoodsInfo, name:'goodsinfo' },
+      { path: '/home/getdesc/:id', component: GetDesc, name:'getdesc' },
+      { path: '/home/getcomment/:id', component: GetComment, name:'getcomment' },
+      
   ],
   linkActiveClass:'mui-active' //默认是router-link-active
   })

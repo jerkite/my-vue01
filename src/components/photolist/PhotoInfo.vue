@@ -10,7 +10,7 @@
 
     <!-- 缩略图区域 -->
     <div class="thumimg">
-        <vue-preview :slides="thum"></vue-preview>
+        <vue-preview :slides="thum"></vue-preview>   
     </div>
     <!-- 内容区域 -->
      
@@ -28,13 +28,13 @@
 
 
 <script>
-import comment from '../subcomponents/Comment.vue'
+import comment from '../subcomponents/Comment.vue'  //引用评论子组件
 export default {
     data(){
         return{
             id:this.$route.params.id,
-            photoinfo:{},
-            thum:[]
+            photoinfo:{},  //保存图文详情数据
+            thum:[]     //保存图文详情中的图片
         }
     },
     created(){
@@ -43,7 +43,7 @@ export default {
     },
 
     methods:{
-        getImageInfo(){
+        getImageInfo(){  //获取图文详情数据
             this.$http.get('api/getimageinfo/' + this.id).then(result => {
                 if(result.body.status === 0){
                     this.photoinfo = result.body.message[0]
@@ -52,12 +52,12 @@ export default {
                     }
             })
         },
-        getThumImages(){
+        getThumImages(){   //获取图文详情中的图片
             this.$http.get('api/getthumimages/' + this.id).then(result =>{
                 result.body.message.forEach(item => {
                     item.w=600;
                     item.h=400;
-                    item.msrc =  item.src;
+                    item.msrc =  item.src;    //由于vue-preview最新版必须加上msrc属性
                 });
                 if(result.body.status === 0){
                     this.thum = result.body.message
@@ -83,7 +83,7 @@ export default {
 
     .photoinfo-container{
 
-
+        padding:0 4px;
         .info-title{
             font-size:15px;
             color:#67CBFF;
@@ -104,7 +104,7 @@ export default {
                 display: flex;
                 flex-wrap: wrap;
                 figure {
-                    width: 28%;
+                    width: 27%;
                     margin: 10px;
                     img {
                      width: 100%;

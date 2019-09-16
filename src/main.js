@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 
 import VuePreview from 'vue-preview'
  
-// defalut install
+// 默认安装
 Vue.use(VuePreview)
 
 

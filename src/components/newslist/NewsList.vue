@@ -25,14 +25,14 @@ import { Toast } from 'mint-ui'
 export default{
     data(){
         return{
-            NewsList:[]
+            NewsList:[]  //保存新闻数据
         }   
     },
     created(){  //在created()调用获取数据的方法--当页面加载完毕之后，就要去获取页面数据
         this.getNewsList()
     },
     methods:{
-        getNewsList(){
+        getNewsList(){   //获取新闻数据
             this.$http.get('api/getnewslist').then( result => {
                 if(result.body.status === 0){
                     this.NewsList = result.body.message
