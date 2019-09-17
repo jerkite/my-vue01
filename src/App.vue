@@ -12,8 +12,6 @@
         </mt-header>
 
 
-
-
         <!-- 中间router组件区域 -->
 
       <transition  mode="out-in">

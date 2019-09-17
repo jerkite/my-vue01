@@ -16,6 +16,4 @@ export default {
 
 
 <style lang="scss" scoped>
-   .search-container{
-   }
 </style>

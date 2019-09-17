@@ -40,5 +40,4 @@ export default {
 .mui-card-content-inner{
     display:inline;
 }
-
 </style>

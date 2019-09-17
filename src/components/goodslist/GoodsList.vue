@@ -49,7 +49,7 @@ export default {
             this.$router.push({ name: 'goodsinfo', params: { id } })
         }
     },
- 
+  
 }
 </script>
 

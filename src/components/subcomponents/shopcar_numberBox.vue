@@ -37,5 +37,4 @@ export default {
     display:inline;
     padding:0;
 }
-
 </style>

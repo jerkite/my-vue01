@@ -18,7 +18,7 @@ import comment from '../subcomponents/Comment.vue'
      components:{
          comment
      }
-
+ 
 }
 </script>
 

@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-
+ 
         <!-- 商品购买区域 -->
         <div class="mui-card">
 			<div class="mui-card-header">商品的名称标题</div>
@@ -34,7 +34,7 @@
                 </div>
             </div>
 		</div>
-
+ 
 
         <!-- 商品参数区域 -->
         <div class="mui-card">
