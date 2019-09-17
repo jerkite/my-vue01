@@ -232,8 +232,8 @@
 ## 设置点击购物车出现小球半场动画
 1.创建小球并给小球设置position:absolute,确定小球的初始位置   
 2.根据分析需要确定小球距页面顶端和左侧的距离和小球所要到达位置距页面顶端和左侧的距离进行相减操作获得动态数据  
- +2.2使用getBoundingClientRect()方法可以获得元素的top,left值。  
- +2.2給小球加上ref="ball"可以使用 this.$refs.ball获得元素  
+ 2.2使用getBoundingClientRect()方法可以获得元素的top,left值。  
+ 2.2給小球加上ref="ball"可以使用 this.$refs.ball获得元素  
 
 
 ## 设置购买数量的最大值
