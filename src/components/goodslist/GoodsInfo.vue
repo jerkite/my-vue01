@@ -30,7 +30,7 @@
                 <p class="numberbox">购买数量:<number-box @getcount="getNumberboxcount" :max="goodsinfo.stock_quantity"></number-box></p>
                 <div class="buy-button">
                     <mt-button type="primary" >立即购买</mt-button>
-                    <mt-button type="danger"  @click="getball" >加入购物车</mt-button>
+                    <mt-button type="danger"  @click="AddtoShopcar" >加入购物车</mt-button>
                 </div>
             </div>
 		</div>
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import numberbox from '../subcomponents/NumberBox.vue'
+import numberbox from '../subcomponents/goodlist_numberBox.vue'
 import swipes from '../subcomponents/Swipes.vue'
 export default {
         data(){
@@ -101,8 +101,23 @@ export default {
             getcomment(id){
                 this.$router.push({ name: 'getcomment' , params: { id } })
             },
-            getball(){
+            AddtoShopcar(){
                 this.isBallapper = !this.isBallapper;
+                
+
+                var carinfo ={   //创建一个对象用来向公共存储中mutation中的方法传数据
+                    id: this.id, 
+                    count:this.numberboxcount,
+                    price:this.goodsinfo.sell_price,
+                    isselect:true
+                }
+
+                this.$store.commit('getcarinfo', carinfo)
+
+
+
+
+
             },
             beforeEnter(el){
                 el.style.transform="translate(0,0)"

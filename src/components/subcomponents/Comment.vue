@@ -5,7 +5,7 @@
         <mt-button type="primary" size="large" @click="PostComment">发表评论</mt-button>
         <div class="comment-list" v-for="(item, i) in comments" :key="item.add_time">
             <div class="comment-item">
-                <h3>第{{i+1}}楼&nbsp&nbsp用户:{{item.user_name}}&nbsp&nbsp发表时间：{{item.add_time | dataFormat}}</h3>
+                <h3>第{{i+1}}楼&nbsp&nbsp用户:{{item.user_name}}&nbsp&nbsp发表时间：{{ item.add_time | dataFormat }}</h3>
                 <h2>{{item.content==null?"此用户很懒什么都没有吐槽":item.content }}</h2>    
             </div> 
         </div> 

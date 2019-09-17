@@ -225,18 +225,18 @@
 2. 让轮播图组件，提供一个 isfull 属性，表示是否撑满父元素；如果为true,表示，宽和高都要是100%，如果为 false，表示，宽是 自适应，高度是100%，同时图片居中显示  
 
 
-##进入商品详情中的图文介绍和商品评论的编程式导航
+## 进入商品详情中的图文介绍和商品评论的编程式导航
 1.使用编程式导航跳转页面设置 this.$router.push({ name: 'goodsdesc', params: { id } })
   this.$router.push({ name: 'goodscomment', params: { id } })  
 
-##设置点击购物车出现小球半场动画
+## 设置点击购物车出现小球半场动画
 1.创建小球并给小球设置position:absolute,确定小球的初始位置   
 2.根据分析需要确定小球距页面顶端和左侧的距离和小球所要到达位置距页面顶端和左侧的距离进行相减操作获得动态数据  
- 2.2使用getBoundingClientRect()方法可以获得元素的top,left值。  
- 2.2給小球加上ref="ball"可以使用 this.$refs.ball获得元素  
+ +2.2使用getBoundingClientRect()方法可以获得元素的top,left值。  
+ +2.2給小球加上ref="ball"可以使用 this.$refs.ball获得元素  
 
 
-##设置购买数量的最大值
+## 设置购买数量的最大值
 1.这里需要父组件向子组件传值，使用Props:[]向子组件传递数据  
 2.由于this.$http.get是异步加载，所以在子组件得到的件数最大值是undefined  
 3.可以用watch监听机制监听到max被赋值后，使用mui('.mui-numbox').numbox().setOption('max',newval)来給获得购买数量的最大值  

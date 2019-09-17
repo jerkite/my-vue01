@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <h1>SearchContainer组件</h1>
+    <div class="search-container">
+        <div class="mui-input-row mui-search">
+			<input type="search" class="mui-input-clear" placeholder="搜索">
+		</div>
     </div>
 </template>
 
@@ -14,5 +16,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
+   .search-container{
+   }
 </style>

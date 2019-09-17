@@ -5,7 +5,11 @@
 
 
         <!-- Header区域 -->
-        <mt-header fixed title="Vue项目"></mt-header>
+        <mt-header fixed title="Vue项目">
+            <span slot="left" @click="goBack" v-show="this.flag">
+                <mt-button icon="back">返回</mt-button>
+            </span>
+        </mt-header>
 
 
 
@@ -30,7 +34,9 @@
 				<span class="mui-tab-label">会员</span>
 			</router-link>
 			<router-link class="mui-tab-itemlzk" to="/shopcar">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="barge">0</span></span>
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+                    <span class="mui-badge" id="barge">{{$store.getters.getAllCount}}</span>
+                </span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-itemlzk" to="/search">
@@ -44,8 +50,30 @@
  
 
 <script>
-
-
+export default({
+    data(){
+        return{
+            flag:false
+        }
+    },
+    created(){
+        this.flag = this.$route.path==='/home'? false: true
+    },
+    methods:{
+        goBack(){
+            this.$router.go(-1)
+        }
+    },
+    watch:{
+        "$route.path":function(newVal, oldVal){
+            if(newVal === '/home'){
+                this.flag = false
+            }else{
+                this.flag = true
+            }
+        }
+    }
+})
 
 </script>
 
