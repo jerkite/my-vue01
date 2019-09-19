@@ -16,23 +16,23 @@ import GetDesc from './components/goodslist/GetDesc.vue'
 import GetComment from './components/goodslist/GetComment.vue'
 
 var router = new VueRouter({
-    routes:[
-      { path: '/', redirect: '/home'},
-      { path: '/home', component: HomeContainer },
-      { path: '/Vip', component: VipContainer },
-      { path: '/shopcar', component: ShopcarContainer },
-      { path: '/search', component: SearchContainer },
-      { path: '/home/newslist', component: NewsList },
-      { path: '/home/newsinfo/:id', component: NewsInfo },
-      { path: '/home/photolist', component: PhotoList },
-      { path: '/home/photoinfo/:id', component: PhotoInfo },
-      { path: '/home/goodslist', component: GoodsList },
-      { path: '/home/goodsinfo/:id', component: GoodsInfo, name:'goodsinfo' },
-      { path: '/home/getdesc/:id', component: GetDesc, name:'getdesc' },
-      { path: '/home/getcomment/:id', component: GetComment, name:'getcomment' },
-      
-  ],
-  linkActiveClass:'mui-active' //默认是router-link-active
-  })
+    routes: [
+        { path: '/', redirect: '/home' },
+        { path: '/home', component: HomeContainer },
+        { path: '/Vip', component: VipContainer },
+        { path: '/shopcar', component: ShopcarContainer },
+        { path: '/search', component: SearchContainer },
+        { path: '/home/newslist', component: NewsList },
+        { path: '/home/newsinfo/:id', component: NewsInfo },
+        { path: '/home/photolist', component: PhotoList },
+        { path: '/home/photoinfo/:id', component: PhotoInfo },
+        { path: '/home/goodslist', component: GoodsList },
+        { path: '/home/goodsinfo/:id', component: GoodsInfo, name: 'goodsinfo' },
+        { path: '/home/getdesc/:id', component: GetDesc, name: 'getdesc' },
+        { path: '/home/getcomment/:id', component: GetComment, name: 'getcomment' },
 
-  export default router
+    ],
+    linkActiveClass: 'mui-active' //默认是router-link-active
+})
+
+export default router

@@ -9,7 +9,6 @@
         </div>
         <hr>
         <div class="newinfo-content" v-html="newsinfo.content"></div>
-
         <!-- 使用子组件要在标签内传递id的值 -->
         <comment :id="this.id"></comment>  
     </div>
