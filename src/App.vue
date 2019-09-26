@@ -54,7 +54,7 @@ export default {
       this.$router.go(-1);
     }
   },
-  watch: {
+  watch: { //watch监视属性，执行异步操作或者开销较大的操作
     "$route.path": function(newVal, oldVal) {
       if (newVal === "/home") {
         this.flag = false;

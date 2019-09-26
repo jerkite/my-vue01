@@ -14,58 +14,58 @@
 </template>
  
 <script>
-import { Toast } from "mint-ui";
+import { Toast } from 'mint-ui'
 export default {
   data() {
     return {
       pageindex: 1,
       comments: [], //保存评论数据
-      msg: ""
-    };
+      msg: ''
+    }
   },
   created() {
-    this.getComments();
+    this.getComments()
   },
   methods: {
     getComments() {
       this.$http
-        .get("api/getcomments/" + this.id + "?pageindex=" + this.pageindex)
+        .get('api/getcomments/' + this.id + '?pageindex=' + this.pageindex)
         .then(result => {
           if (result.body.status == 0) {
-            this.comments = this.comments.concat(result.body.message); //获取评论数据由于有多页需要用数组拼接方法concat
+            this.comments = this.comments.concat(result.body.message) //获取评论数据由于有多页需要用数组拼接方法concat
           } else {
-            Toast("获取评论失败");
+            Toast('获取评论失败')
           }
-        });
+        })
     },
     getMore() {
-      this.pageindex++; //点击加载更多 页数加一
-      this.getComments(); //重新加载获取评论数据方法
+      this.pageindex++ //点击加载更多 页数加一
+      this.getComments() //重新加载获取评论数据方法
     },
     PostComment() {
       //发送评论数据
-      if (this.msg.trim() == "") {
-        return Toast("评论不能为空");
+      if (this.msg.trim() == '') {
+        return Toast('评论不能为空')
       }
       this.$http
-        .post("api/postcomment/" + this.id, { content: this.msg.trim() })
+        .post('api/postcomment/' + this.id, { content: this.msg.trim() })
         .then(result => {
           if (result.body.status === 0) {
             var cmt = {
-              user_name: "匿名用户",
+              user_name: '匿名用户',
               add_time: Date.now(),
               content: this.msg.trim()
-            };
-            this.comments.unshift(cmt); //加入评论数组中
-            this.msg = ""; //文本域重新清空
+            }
+            this.comments.unshift(cmt) //加入评论数组中
+            this.msg = '' //文本域重新清空
           } else {
-            Toast("评论失败");
+            Toast('评论失败')
           }
-        });
+        })
     }
   },
-  props: ["id"] //接受从父组件传递过来的值
-};
+  props: ['id'] //接受从父组件传递过来的值
+}
 </script>
 
 <style lang="scss" scoped>

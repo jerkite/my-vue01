@@ -12,7 +12,7 @@ import VuePreview from 'vue-preview'
 Vue.use(VuePreview)
 
 
-import moment from 'moment'
+import moment from 'moment' //日期处理类库
 //定义全局过滤器
 Vue.filter('dataFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
     return moment(dataStr).format(pattern)
@@ -90,6 +90,7 @@ var store = new Vuex.Store({
             localStorage.setItem('car', JSON.stringify(state.car))
 
         },
+        //获取购物车更新后的数量
         getUpdateCarCount(state, goodsinfo) {
             state.car.forEach(item => {
                 if (item.id == goodsinfo.id) {
@@ -122,6 +123,7 @@ var store = new Vuex.Store({
         }
     },
     getters: {   //$store.getters.name(state)
+        //获取购物车所以商品的数量
         getAllCount(state) {
             var c = 0
             state.car.forEach(item => {
